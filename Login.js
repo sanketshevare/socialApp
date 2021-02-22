@@ -5,125 +5,115 @@ import {
   TextInput,
   StyleSheet,
   Text,
+  Image,
   SafeAreaView,
   ImageBackground,
 
 } from "react-native";
 //import setup from "./setup";
-import firebase from "firebase";
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAwpkGgwp2Bs0ePL846wuBNzNfxVJApcaw",
-    authDomain: "project-bd9ef.firebaseapp.com",
-    projectId: "project-bd9ef",
-    storageBucket: "project-bd9ef.appspot.com",
-    messagingSenderId: "822511742003",
-    appId: "1:822511742003:web:28aab2ad50afcc6b584746"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-
-
+import Firebase from './config/firebase';
 
 
 class Login extends Component {
-constructor(props){
-  super(props)
+  constructor(props) {
+    super(props)
 
-  this.state = ({
-  email: '',
-  password: '',
-  })
-}
+    this.state = ({
+      email: '',
+      password: '',
+      error: '',
+      isError: false,
+    })
+  }
 
-signUpUser = (email, password) => {
-try{
-if(this.state.password.length<6)
-{
-  alert("Please enter atleast 6 characters")
-}
-firebase.auth().createUserWithEmailAndPassword(email, password)
-}
-catch(error){
-console.log(error.toString())
+  handleLogin = () => {
+    const { email, password } = this.state;
 
-}
-  
-}
+    Firebase.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
 
-loginUser = (email, password) => {
+         this.props.navigation.navigate('Splash');
 
-  
-}
+      })
+      .catch(error => {
+        this.setState({ isError: true })
+        this.setState({ error });
+        setTimeout(() => {
+          this.setState({ isError: false, email: '', password: '', error: '' });
+        }, 2500)
+      })
+  }
 
 
   render() {
 
- 
+
     const { navigation } = this.props;
 
 
 
     return (
-     <ImageBackground style={{flex: 1,}} source={require('./assets/sample.png')}>
-     
-            <View  style={styles.container}>
-            
+      <ImageBackground style={{ flex: 1, }} source={require('./assets/back.png')}>
+        <Text style={{ fontSize: 50, color: 'pink', textAlign: 'center', paddingTop: 20 }}>SocialApp</Text>
+        <View style={styles.container}>
 
-            
-                <TextInput
-                    style={styles.input}
-                  placeholder="Email"
-                  placeholderTextColor="#696969"
-                 onChangeText={(email) => this.setState({email})}
-                />
+          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", textTransform: 'capitalize' }}>
+            {this.state.error.message}
+          </Text> : <Text></Text>}
 
-                <TextInput
-                   style={styles.input}
-                  placeholder="Password"
-                  placeholderTextColor="#696969"
-                  secureTextEntry={true}
-                  onChangeText={(password) => this.setState({password})}
-                />
-               <Text> </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="#696969"
+            onChangeText={(email) => this.setState({ email })}
+          />
 
-                <Button  
-                style={{}}
-                title="Sign In"
-                color="blue"
-                //onPress={() => navigation.navigate("Splash")}
-                onPress={() => this.signUpUser(this.state.email, this.state.password)}
-                />
-                <Text> </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="#696969"
+            secureTextEntry={true}
+            onChangeText={(password) => this.setState({ password })}
+          />
+          <Text> </Text>
+          <Text  onPress={() => navigation.navigate("ForgotPassword")}> Fogot Password? </Text>
+           <Text> </Text>
 
-                <Text style={{color: 'white'}}> Do Not Have An Account? </Text>
-                    <Text> </Text>
-              <Button  
-              style={{}}
-                title="Sign Up"
-                color="blue"
-                //onPress={() => navigation.navigate("Register")}
-                onPress={() => this.loginUser(this.state.email, this.state.password)}
-                />
-               
+          <Button
+            title="Sign In"
+            // color="blue"
+            type="submit"
+            onPress={() => this.handleLogin()}
+          />
+          <Text> </Text>
 
-            
-            </View>
-            </ImageBackground>
 
-        
+
+          <Text style={{ color: 'white' }}> Don't Have An Account? </Text>
+          <Text> </Text>
+          <Button
+            title="Sign Up"
+            // color="pink"
+            onPress={() => navigation.navigate("Register")}
+          />
+
+
+
+        </View>
+      </ImageBackground>
+
+
     );
   }
 }
 
 const styles = StyleSheet.create({
- button: {
-  backgroundColor: 'red',
-  borderColor: 'black',
-  padding: 100,
-  borderRadius: 10,
+  button: {
+    backgroundColor: 'red',
+    borderColor: 'black',
+    padding: 100,
+    borderRadius: 10,
 
   },
   input: {
@@ -137,18 +127,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
   },
- 
- 
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-   images: {
+  images: {
     width: 200,
     height: 200,
   },
- 
+
 })
 
 
