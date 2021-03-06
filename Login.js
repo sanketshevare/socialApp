@@ -32,16 +32,20 @@ class Login extends Component {
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        this.setState({ isError: true });
 
-         this.props.navigation.navigate('Splash');
-
+        //this.setState({ });
+        setTimeout(() => {
+          this.props.navigation.navigate('Splash');
+          this.setState({ isError: false, name: '', email: '', password: '' })
+        }, 3000)
       })
       .catch(error => {
-        this.setState({ isError: true })
+        this.setState({ isError: true });
         this.setState({ error });
         setTimeout(() => {
           this.setState({ isError: false, email: '', password: '', error: '' });
-        }, 2500)
+        }, 2500);
       })
   }
 
@@ -58,27 +62,31 @@ class Login extends Component {
         <Text style={{ fontSize: 50, color: 'pink', textAlign: 'center', paddingTop: 20 }}>SocialApp</Text>
         <View style={styles.container}>
 
-          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", textTransform: 'capitalize' }}>
+          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "pink", borderColor: "black", textTransform: 'capitalize' }}>
             {this.state.error.message}
           </Text> : <Text></Text>}
 
           <TextInput
             style={styles.input}
-            placeholder="Email"
-            placeholderTextColor="#696969"
-            onChangeText={(email) => this.setState({ email })}
+            placeholder='Email'
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
+            placeholderTextColor='#696969'
+
           />
 
           <TextInput
             style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="#696969"
+            placeholder='Password'
             secureTextEntry={true}
-            onChangeText={(password) => this.setState({ password })}
+            value={this.state.password}
+            onChangeText={password => this.setState({ password })}
+            placeholderTextColor='#696969'
+
           />
           <Text> </Text>
-          <Text  onPress={() => navigation.navigate("ForgotPassword")}> Fogot Password? </Text>
-           <Text> </Text>
+          <Text onPress={() => navigation.navigate("ForgotPassword")}> Forgot Password? </Text>
+          <Text> </Text>
 
           <Button
             title="Sign In"

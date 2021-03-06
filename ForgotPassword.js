@@ -12,36 +12,34 @@ class ForgotPassword extends Component {
   }
 
   forgotPassword = () => {
-  	const { email} = this.state;
+    const { email } = this.state;
 
 
     Firebase.auth()
-    .sendPasswordResetEmail(email)
-         .then(function (user) {
-         	 this.setState({ isError: true })
-       this.setState({ error });
-
-       
+      .sendPasswordResetEmail(email)
+      .then(function (user) {
+        alert("Email Sent Successfully");
+        navigation.navigate("Login");
       })
-         .catch(error => {
-         this.setState({ isError: true });
+      .catch(error => {
+        this.setState({ isError: true });
         this.setState({ error });
         setTimeout(() => {
-          this.setState({ isError: false, email: '', name: '', password: '' })
-        }, 2500)
+          this.setState({ isError: false, email: '' });
+        }, 3000);
       })
   }
 
- render() {
+  render() {
     return (
-    	 <ImageBackground style={{ flex: 1 }} source={require('./assets/back.png')} >
-    	 <View style={styles.container}>
-    	  {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", borderWidth: .5, textTransform: 'capitalize' }}>
+      <ImageBackground style={{ flex: 1 }} source={require('./assets/back.png')} >
+        <View style={styles.container}>
+          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", borderWidth: .5, textTransform: 'capitalize' }}>
             {this.state.error.message}
           </Text> : <Text></Text>}
-    	  <TextInput
+          <TextInput
             style={styles.input}
-            value={this.state.name}
+            value={this.state.email}
             placeholder='Enter Your Registered Email'
             onChangeText={email => this.setState({ email })}
             placeholderTextColor='#696969'
@@ -49,20 +47,20 @@ class ForgotPassword extends Component {
           />
 
           <Text> </Text>
-           <Button
+          <Button
             style={{}}
             title='Send Email'
-            // color='pink'
+            //color='8739F9'
             type='submit'
-            onPress={(e) =>this.forgotPassword(e) }
+            onPress={() => this.forgotPassword()}
           />
-          </View>
+        </View>
 
-           </ ImageBackground >
+      </ ImageBackground >
 
 
-    	);
-    }
+    );
+  }
 }
 const styles = StyleSheet.create({
 
@@ -81,6 +79,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
+
+
 })
 export default ForgotPassword;

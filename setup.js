@@ -1,21 +1,44 @@
-/*import React from "react";
-import * as firebase from "firebase";
+
+import React, { Component } from "react";
+import {
+    View,
+    Button,
+    TextInput,
+    StyleSheet,
+    Text,
+    Image,
+    SafeAreaView,
+    ImageBackground,
+
+} from "react-native";
 
 
-const firebaseConfig = {
-	apiKey: "AIzaSyAwpkGgwp2Bs0ePL846wuBNzNfxVJApcaw",
-    authDomain: "project-bd9ef.firebaseapp.com",
-    projectId: "project-bd9ef",
-    storageBucket: "project-bd9ef.appspot.com",
-    messagingSenderId: "822511742003",
-    appId: "1:822511742003:web:28aab2ad50afcc6b584746"
+class setup extends Component {
+    constructor(props) {
+        super(props);
 
+        // setTimeout(() => {
+        //props.navigation.navigate("Login");
+        // }, 0);
+    }
+
+    render() {
+
+
+        const { navigation } = this.props;
+
+
+
+        return (
+            <ImageBackground style={{ flex: 1, }} source={require('./assets/back.png')}>
+                <Text style={{ fontSize: 50, color: 'pink', textAlign: 'center', paddingTop: 300 }}>SocialApp</Text>
+                <View>
+
+                </View>
+            </ImageBackground>
+        );
+    }
 }
-if(!firebase.apps){
-	firebase.initializeApp(firebaseConfig)
 
-}
 
-export default ()=>{
-	return(firebase,auth);
-}*/
+export default setup;
