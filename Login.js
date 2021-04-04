@@ -45,7 +45,7 @@ class Login extends Component {
         this.setState({ error });
         setTimeout(() => {
           this.setState({ isError: false, email: '', password: '', error: '' });
-        }, 2500);
+        }, 3000);
       })
   }
 
@@ -62,7 +62,7 @@ class Login extends Component {
         <Text style={{ fontSize: 50, color: 'pink', textAlign: 'center', paddingTop: 20 }}>SocialApp</Text>
         <View style={styles.container}>
 
-          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "pink", borderColor: "black", textTransform: 'capitalize' }}>
+          {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", textTransform: 'capitalize' }}>
             {this.state.error.message}
           </Text> : <Text></Text>}
 
