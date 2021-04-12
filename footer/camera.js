@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import {
     View,
     Button,
@@ -10,16 +11,17 @@ import {
 
 
 } from "react-native";
-import { GiftedChat } from 'react-native-gifted-chat';
+
 
 
 class Chat extends Component {
 
     render() {
-
-        const { navigation } = this.props;
-
-        return <GiftedChat />;
+        return (
+            <View>
+                <Text>camera</Text>
+            </View>
+        );
 
     }
 }

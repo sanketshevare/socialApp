@@ -5,14 +5,14 @@ import Splash from "./Splash";
 import Login from "./Login";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPassword";
-import Chat from "./Chat";
+
 //import setup from "./setup";
 
 const AppNavigator = createStackNavigator({
-  // Splash: {
+  //  Splash: {
   //   screen: Splash
   // },
-  // setup: {
+  // // setup: {
   //   screen: setup
   // },
   Login: {
@@ -28,9 +28,7 @@ const AppNavigator = createStackNavigator({
   ForgotPassword: {
     screen: ForgotPassword
   },
-  Chat: {
-    screen: Chat
-  },
+
 });
 
 export default createAppContainer(AppNavigator);
