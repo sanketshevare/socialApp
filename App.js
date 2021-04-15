@@ -5,15 +5,14 @@ import Splash from "./Splash";
 import Login from "./Login";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPassword";
-
-//import setup from "./setup";
+// import Setup from "./footer/setup";
 
 const AppNavigator = createStackNavigator({
   //  Splash: {
   //   screen: Splash
   // },
-  // // setup: {
-  //   screen: setup
+  // setup: {
+  //   screen: Setup
   // },
   Login: {
     screen: Login

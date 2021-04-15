@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, TextInput, ImageBackground} from "react-native";
 import {Button, Container, Footer, Icon, Content, FooterTab, Header} from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 import Firebase from 'firebase'
@@ -25,10 +25,22 @@ class Splash extends Component {
  }
 
 
-
+//  async componentWillMount() {
+//   await Expo.Font.loadAsync({
+//     'Roboto': require('native-base/Fonts/Roboto.ttf'),
+//     'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+//     'MaterialIcons': require('native-base/Fonts/MaterialIcons.ttf'),
+//   });
+ 
+//   }
 
 
   render() {
+
+
+
+
+
     let AppComponent = null;
 
     if (this.state.index == 0) {
@@ -54,7 +66,7 @@ class Splash extends Component {
         </Content>
        
          
-       
+        
          <Footer>
            <FooterTab style={{backgroundColor: "mediumslateblue"}}>
        <Button onPress={()=>this.switchScreen(0)}>
