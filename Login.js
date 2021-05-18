@@ -11,7 +11,7 @@ import {
 
 } from "react-native";
 //import setup from "./setup";
-import Firebase from './config/firebase';
+import Fire from 'firebase'
 
 
 class Login extends Component {
@@ -29,7 +29,7 @@ class Login extends Component {
   handleLogin = () => {
     const { email, password } = this.state;
 
-    Firebase.auth()
+    Fire.auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ isError: true });

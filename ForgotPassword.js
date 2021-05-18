@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground, } from "react-native";
-import Firebase from 'firebase'
+import Fire from 'firebase'
 class ForgotPassword extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class ForgotPassword extends Component {
     const { email } = this.state;
 
 
-    Firebase.auth()
+    Fire.auth()
       .sendPasswordResetEmail(email)
       .then(function (user) {
         alert("Email Sent Successfully");

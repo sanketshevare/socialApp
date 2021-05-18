@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, Button, ImageBackground, } from "react-native";
-import Firebase from 'firebase'
+import Fire from 'firebase'
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,7 @@ class Register extends Component {
     const { email, password } = this.state;
 
 
-    Firebase.auth()
+    Fire.auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ isError: true });
