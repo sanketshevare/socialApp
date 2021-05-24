@@ -8,19 +8,26 @@ import ForgotPassword from "./ForgotPassword";
 import settings from "./footer/settings";
 import Main from "./footer/chatting/Main";
 import Chat from "./footer/chatting/Chat";
-
+import post from "./footer/feed/post";
+import profile from "./footer/profile/profile";
 
 
 const AppNavigator = createStackNavigator({
-    //  Splash: {
-    //   screen: Splash
-    // },
+     SOCIALAPP: {
+      screen: Splash
+    },
     // Main :{
     //   screen: Main
     // },
     // Chat: {
     //   screen: Chat
     // },
+  //  post: {
+  //    screen: post
+  //  },
+  profile :{
+    screen: profile
+  },
   Login: {
     screen: Login,
   },

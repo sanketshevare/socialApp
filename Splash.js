@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, TextInput, ImageBackground} from "react-native"
 import {Button, Container, Footer, Icon, Content, FooterTab, Header} from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 import Firebase from 'firebase'
-import home from "./footer/home";
+import home from "./footer/feed/home";
 import Chat from "./footer/chatting/Chat";
-import post from "./footer/post";
+import post from "./footer/feed/post";
 import settings from "./footer/settings";
-import profile from "./footer/profile";
+import profile from "./footer/profile/profile";
 
 
 
