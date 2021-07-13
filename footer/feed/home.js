@@ -3,6 +3,10 @@ import { Button } from 'native-base';
 import React, {useEffect, useState} from 'react';
 import { Text, View, FlatList, Image, TouchableOpacity, RefreshControl,LogBox} from "react-native";
 import { SceneView } from 'react-navigation';
+import { Header, Container } from "native-base";
+import Ionicans from "react-native-vector-icons/Ionicons";
+
+
 LogBox.ignoreAllLogs("Setting a timer for ");
 export default function home() {
 
@@ -27,8 +31,10 @@ export default function home() {
     }, [])
 
     return (
-        <View style={{flex: 1, backgroundColor: "white"}}>
-           <FlatList 
+        <View style={{flex: 1, backgroundColor: "#738276"}}>
+      
+     <FlatList 
+
                       refreshControl = {
                <RefreshControl refreshing={isLoading} onRefresh={() => {
                    setLoading(true);
@@ -38,19 +44,20 @@ export default function home() {
            }
            
 
-
+     
 
            data={listData}
-           renderItem={({item}) => <View style={{margin: 10, marginLeft:1, marginRight: 1, borderRadius: 7, elevation: 10, backgroundColor: "white"}}>
+           renderItem={({item}) => <View style={{margin: 0, marginLeft:0, marginRight: 0, borderRadius: 0, elevation: 10, backgroundColor: "#100c08"}}>
+                    <View style={{height: 2, width: "100%", backgroundColor: "#333", }} />
 
                <View style={{flexDirection: "row", alignItems: "center", padding: 10}}>
 
-               <Image source={{uri:"https://placeimg.com/140/140/any"}} style={{height: 50, width: 50, borderRadius: 50}} />
-              <View style={{marginLeft: 10}}>
-              <Text style={{fontSize: 18}}>{item.name}</Text>
+               <Image source={{uri:item.profileImage}} style={{height: 50, width: 50, borderRadius: 50}} />
+              <View style={{marginLeft: 10, }}>
+              <Text style={{fontSize: 18, color: "#FFFF00"}}>{item.name}</Text>
               <View style={{flexDirection: "row"}}>
-              <Text style={{fontSize: 12}}>{new Date(item.createdOn).toString().substring(0, 16)}</Text>
-              <Text style={{fontSize: 12, marginLeft: 5}}>{new Date(item.createdOn).getHours() + ":" + new Date(item.createdOn).getMinutes()}</Text>
+              <Text style={{fontSize: 12, color: "#FFF"}}>{new Date(item.createdOn).toString().substring(0, 16)}</Text>
+              <Text style={{fontSize: 12, marginLeft: 5, color: "#FFF"}}>{new Date(item.createdOn).getHours() + ":" + new Date(item.createdOn).getMinutes()}</Text>
 
               </View>
              
@@ -64,18 +71,23 @@ export default function home() {
 
                
                
-               <Text style={{margin: 10, color: "#333", fontSize: 12, marginTop: 5}}>{item.text}</Text>
+               <Text style={{margin: 10, color: "#FFF", fontSize: 12, marginTop: 5}}>{item.text}</Text>
                <View style={{height: 1, width: "100%", backgroundColor: "#333", }} />
 
                <View style={{ flexDirection: "row",}}>
-                   <TouchableOpacity style={{flex: 1, margin: 12}}>
-                       <Text style={{textAlign: "center", fontWeight: "bold"}}>Like</Text>
+                   <TouchableOpacity style={{flex: 1, margin: 12, }}>
+                   <Ionicans style={{marginLeft: 60}}
+                  name="heart-outline" color="white" size={30}
+                  />
+
                    </TouchableOpacity>
 
-                   <View style={{backgroundColor: "#3333", height: "100%", width: 1}} />
+                   <View style={{backgroundColor: "#333", height: "100%", width: 1}} />
 
-                   <TouchableOpacity style={{flex: 1, margin: 12}}>
-                       <Text  style={{textAlign: "center",  fontWeight: "bold"}}>Comment</Text>
+                   <TouchableOpacity style={{flex: 1, margin: 12, }}>
+                   <Ionicans style={{marginLeft: 60}}
+                  name="chatbox-outline" color="white" size={30}
+                  />
                    </TouchableOpacity>
                </View>
 

@@ -12,6 +12,8 @@ import {
 } from "react-native";
 //import setup from "./setup";
 import Fire from 'firebase'
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 
 
 class Login extends Component {
@@ -58,21 +60,24 @@ class Login extends Component {
 
 
     return (
-      <ImageBackground style={{ flex: 1, }} source={require('./assets/back.png')}>
-        <Text style={{ fontSize: 50, color: 'pink', textAlign: 'center', paddingTop: 20 }}>SocialApp</Text>
+      <ImageBackground style={{ flex: 1, }} source={{uri: "https://wallpaperaccess.com/download/dark-iphone-1194580"}}>
+        <Text style={{  top: 150,fontSize: 50, color: '#EFFD5F', textAlign: 'center', }}>k i l o G r a m</Text> 
+        
+
         <View style={styles.container}>
 
           {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", textTransform: 'capitalize' }}>
             {this.state.error.message}
           </Text> : <Text></Text>}
-
+        
           <TextInput
+         
             style={styles.input}
-            placeholder='Email'
+            placeholder='example@gmail.com'
             value={this.state.email}
             onChangeText={email => this.setState({ email })}
             placeholderTextColor='#696969'
-
+           
           />
 
           <TextInput
@@ -85,12 +90,12 @@ class Login extends Component {
 
           />
           <Text> </Text>
-          <Text onPress={() => navigation.navigate("ForgotPassword")}> Forgot Password? </Text>
+          <Text style={{color: "white"}} onPress={() => navigation.navigate("ForgotPassword")}> Forgot Password? </Text>
           <Text> </Text>
 
           <Button
             title="Sign In"
-            // color="blue"
+             color="#E4CD05"
             type="submit"
             onPress={() => this.handleLogin()}
           />
@@ -102,7 +107,7 @@ class Login extends Component {
           <Text> </Text>
           <Button
             title="Sign Up"
-            // color="pink"
+            color="#F9A602"
             onPress={() => navigation.navigate("Register")}
           />
 
@@ -138,12 +143,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    top:100
   },
   images: {
     width: 200,
     height: 200,
   },
+
 
 })
 

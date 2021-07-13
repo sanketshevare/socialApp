@@ -1,10 +1,26 @@
-// import React from "react";
+import React from 'react'
+import { View, Text } from 'react-native'
+import * as firebase from "firebase";
+import { database, storage } from "firebase";
 
-// export const navigationRef = React.createRef();
+export default function rootNavigation() {
 
-// const navigate = (name, params) =>
-// navigationRef.current?.navigate(name, params);
 
-// export default {
-//     navigate,
-// };
+    var user = firebase.auth().currentUser;
+    console.log(user);
+
+    if (user != null) {
+      name = user.displayName;
+      email = user.email;
+      uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                       // this value to authenticate with your backend server, if
+ 
+                       // you have one. Use User.getToken() instead.
+    }
+    return (
+        <View>
+            <Text>hi</Text>
+        </View>
+    )
+}
+

@@ -5,17 +5,23 @@ import Splash from "./Splash";
 import Login from "./Login";
 import Register from "./Register";
 import ForgotPassword from "./ForgotPassword";
-import settings from "./footer/settings";
+import settings from "./footer/settings/settings";
 import Main from "./footer/chatting/Main";
 import Chat from "./footer/chatting/Chat";
 import post from "./footer/feed/post";
 import profile from "./footer/profile/profile";
+import rootNavigation from "./footer/chatting/navigation/rootNavigation";
+
 
 
 const AppNavigator = createStackNavigator({
-     SOCIALAPP: {
-      screen: Splash
-    },
+  // Splash: {
+  //   screen: Splash,
+   
+  // },
+    // settings : {
+    //   screen: settings
+    // },
     // Main :{
     //   screen: Main
     // },
@@ -25,17 +31,22 @@ const AppNavigator = createStackNavigator({
   //  post: {
   //    screen: post
   //  },
-  profile :{
-    screen: profile
-  },
+  // rootNavigation: {
+  //   screen: rootNavigation
+  // }
+  // profile :{
+  //   screen: profile
+  // },
   Login: {
     screen: Login,
+    
   },
-  Register: {
+   Register: {
     screen: Register,
   },
   Splash: {
     screen: Splash,
+   
   },
 
   ForgotPassword: {

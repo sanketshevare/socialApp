@@ -1,5 +1,5 @@
 import React, {useState , Component, useEffect } from 'react'
-import {  TouchableOpacity, TextInput, ImageBackground, ActivityIndicator, LogBox} from 'react-native'
+import {  TouchableOpacity, TextInput, ImageBackground, ActivityIndicator, LogBox, FlatList} from 'react-native'
 import AntIcon from "react-native-vector-icons/AntDesign";
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from "expo-permissions";
@@ -10,11 +10,33 @@ import { Entypo } from '@expo/vector-icons';
 import * as firebase from "firebase";
 import {   database, storage } from 'firebase';
 import {Button, Container, Footer, Icon, Content, FooterTab, Header, View, Text, LogBOx} from "native-base";
+import color from 'color';
 
 
 
 LogBox.ignoreAllLogs("Setting a timer for a long period of time, i.e. multiple minutes, is a performance and correctness issue on Android as it keeps the timer module awake, and timers can only be called when the app is in the foreground. See https://github.com/facebook/react-native/issues/12981 for more info.")
 export default function post() {
+
+
+    const[listData, setListData] = useState([]);
+    
+
+    useEffect(() => {
+      database().ref("/Profile/").once("value", result=> {
+          console.log(result.val());
+          var tempData = [];
+         Object.keys(result.val()).sort((a, b) => { return (a-b) }).forEach(keys => {
+             tempData = [
+                
+              result.val()[keys],
+                
+             ]
+  
+         })
+         setListData(tempData)
+      })
+  }, [])
+
 
     const [textValue, setValue] = useState("");
     const [image, setImage] = useState("");
@@ -59,13 +81,22 @@ export default function post() {
 
    
         return (
+            <FlatList
+            
+            data={listData}
+        renderItem={({item}) => 
             <Container style={{ flex: 1, }}>
-            <View style={{backgroundColor: "white", flex: 1}}>
+            <View style={{backgroundColor: "black", flex: 1}}>
                 {isLoading?<ActivityIndicator size="large" color="#f66" style={{position: "absolute", top: "45%", left: "45%"}} />: null}
+                <View style={{}}>
+  <Header style={{justifyContent: "center", alignItems: "center", backgroundColor: "black"}}>
+<Text style={{justifyContent: "center", alignItems: "center", fontSize: 16, fontWeight: "bold", color: "white"}}>CREATE NEW POST</Text>
+  </Header>
+</View>
 
    { image ==""?<TouchableOpacity 
             onPress={pickFromGallery}
-            style={{backgroundColor: "#aaaa", justifyContent: "center", alignItems: "center", height: 200}}>
+            style={{backgroundColor: "#1B1212", justifyContent: "center", alignItems: "center", height: 200}}>
                 <AntIcon name="pluscircleo" color="white" size={80}/>
                 <Text style={{fontSize: 20, marginTop: 5, color: "white"}}>Add Image</Text>
             </TouchableOpacity>: <ImageBackground source={{uri: image}} style={{height: 200,  alignItems: "flex-end"}}> 
@@ -76,9 +107,11 @@ export default function post() {
                </TouchableOpacity>
                 </ImageBackground>  }
 
-            <TextInput 
-            style={{textAlignVertical: "top"}}
+            <TextInput placeholderTextColor={'white'} 
+            placeholderTextSize={30}
+            style={{textAlignVertical: "top", color: "white", fontSize: 18}}
             placeholder={"Add Feed Caption Here.."}
+            //placeholderStyle={{color:"white"}}
             numberOfLines={5}
             value={textValue}
             onChangeText={(res) => {
@@ -87,13 +120,13 @@ export default function post() {
             /> 
  
   
-            <TouchableOpacity style={{backgroundColor: "#f66", margin: 10, borderRadius: 10, top: 300}} 
+            <TouchableOpacity style={{backgroundColor: "#EFFD5F", margin: 10, borderRadius: 10, top: 230}} 
             onPress={ async () =>{
                 setLoading(true);
                 const dateTime = new Date();
                 const uploadObj = {
-                    name: "Test",
-                    profileImage: "https://i.picsum.photos/id/625/200/200.jpg?hmac=oIwf4IzbglfXYZo-9VXZTHju2-ox3D-Vooeuioav_nw",
+                    name: firebase.auth().currentUser.displayName,
+                    profileImage:  firebase.auth().currentUser.photoURL, //"https:/firebasestorage.googleapis.com/v0/b/project-bd9ef.appspot.com/o/Profile%2F"+item.createdOn+".jpg?alt=media&token=87cda9e7-d178-4f60-ae25-23082beaaed6",
                     text: textValue,
                     Isimage: image==""?false:true,
                     createdOn: dateTime.getTime()
@@ -123,11 +156,13 @@ export default function post() {
                 
                 
             }}>
-                <Text style={{color: "white", margin: 15, textAlign: "center", fontSize: 20}}>Post</Text>
+                <Text style={{color: "#000", margin: 15, textAlign: "center", fontSize: 20}}>Post</Text>
             </TouchableOpacity>
             </View>
            </Container>
-            
+             }
+             keyExtractor={(item) => (item)}
+             />
         );
    
 }

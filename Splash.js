@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground} from "react-native";
+import { StyleSheet, Text, View, TextInput, ImageBackground, Image} from "react-native";
 import {Button, Container, Footer, Icon, Content, FooterTab, Header} from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 import Firebase from 'firebase'
 import home from "./footer/feed/home";
 import Chat from "./footer/chatting/Chat";
 import post from "./footer/feed/post";
-import settings from "./footer/settings";
+import settings from "./footer/settings/settings";
 import profile from "./footer/profile/profile";
+import * as firebase from "firebase";
 
 
 
@@ -69,30 +70,44 @@ class Splash extends Component {
          
         
          <Footer>
-           <FooterTab style={{backgroundColor: "mediumslateblue"}}>
+           <FooterTab style={{backgroundColor: "#000"}}>
        <Button onPress={()=>this.switchScreen(0)}>
-            <Icon name='home'/>
-            <Text>Home</Text>
+            <Icon name='home-outline' style={{color:"#FFFF00"}}/>
+            {/* <Text>Home</Text> */}
           </Button>
         
-          <Button onPress={()=>this.switchScreen(2)} >
-            <Icon name='paper-plane' />
-            <Text>Chat</Text>
+          <Button  onPress={()=>this.switchScreen(2)} >
+            <Icon name='paper-plane-outline'  style={{color:"#FFFF00"}}/>
+            {/* <Text>Chat</Text> */}
           
           </Button>
-          <Button  onPress={()=>this.switchScreen(1)}>
-            <Icon name='add' />
-            <Text>Post</Text>
+          <Button  onPress={()=>this.switchScreen(1)} >
+            <Icon name='add-circle-outline'  style={{color:"#FFFF00"}}/>
+            {/* <Text>Post</Text> */}
           </Button>
           
-          <Button onPress={()=>this.switchScreen(3)}>
-            <Icon name='settings' />
-            <Text>Settings</Text>
+          <Button color="yellow" onPress={()=>this.switchScreen(3)}>
+            <Icon name='settings-outline'  style={{color:"#FFFF00"}}/>
+            {/* <Text>Settings</Text> */}
           </Button>
-          <Button onPress={()=>this.switchScreen(4)}>
-            <Icon name='person' />
-            <Text>Profile</Text>
-          </Button>
+          <Button onPress={()=>this.switchScreen(4)} >
+          <Image
+          onPress={()=>this.switchScreen(4)} 
+          style={{  
+            height: 7,
+            width: 7,
+            borderRadius: 25,
+            padding: 15,
+            borderColor: "#353935",
+            borderWidth: 1,
+            
+            
+          
+          }}
+         
+      source={{uri:firebase.auth().currentUser.photoURL }} resizeMode={"cover"}  />
+    
+         </Button>
           </FooterTab>
          </Footer>
      

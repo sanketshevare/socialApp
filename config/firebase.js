@@ -39,8 +39,10 @@ class Fire {
 //   };
 
   // getting unique credentials
-  get uid() {
+  get uid() { 
+  
     return (firebase.auth().currentUser || {}).uid;
+    
   }
 
   // referencing the 'messages' table in the firebase database
@@ -82,6 +84,8 @@ class Fire {
         text,
         user,
         timestamp: this.timestamp,
+       
+        
       };
       this.append(message);
     }

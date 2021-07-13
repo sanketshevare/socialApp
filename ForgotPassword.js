@@ -32,7 +32,7 @@ class ForgotPassword extends Component {
 
   render() {
     return (
-      <ImageBackground style={{ flex: 1 }} source={require('./assets/back.png')} >
+      <ImageBackground style={{ flex: 1 }} source={{uri: "https://i.pinimg.com/originals/f8/52/cf/f852cf39938844b8f6f4efc2ce41a9de.jpg"}} >
         <View style={styles.container}>
           {this.state.isError ? <Text style={{ fontSize: 18, color: "red", backgroundColor: "white", borderColor: "black", borderWidth: .5, textTransform: 'capitalize' }}>
             {this.state.error.message}

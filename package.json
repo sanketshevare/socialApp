@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
-    "@expo/webpack-config": "~0.12.45",
+    "@expo/webpack-config": "^0.12.77",
     "@firebase/firestore": "^2.2.4",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/viewpager": "^5.0.11",
@@ -24,7 +24,9 @@
     "expo-font": "~8.4.0",
     "expo-image-manipulator": "~8.4.0",
     "expo-image-picker": "~9.2.0",
+    "expo-mail-composer": "~9.0.0",
     "expo-permissions": "~10.0.0",
+    "expo-random": "~10.0.0",
     "expo-splash-screen": "~0.8.1",
     "expo-status-bar": "~1.0.3",
     "expo-updates": "~0.4.0",
@@ -35,6 +37,7 @@
     "react-native": "~0.63.4",
     "react-native-appearance": "^0.3.4",
     "react-native-easy-chat-ui": "^0.4.14",
+    "react-native-elements": "^3.4.1",
     "react-native-firebase": "^5.6.0",
     "react-native-gesture-handler": "~1.8.0",
     "react-native-gifted-chat": "^0.16.3",
@@ -45,6 +48,7 @@
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",
     "react-native-unimodules": "~0.12.0",
+    "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "react-navigation": "^3.13.0",
@@ -60,7 +64,7 @@
     "jest": "~25.2.6",
     "react-test-renderer": "~16.13.1"
   },
-  "private": false,
+  "private": true,
   "name": "project",
   "version": "1.0.0"
 }
