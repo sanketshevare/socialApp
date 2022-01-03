@@ -8,7 +8,7 @@ import {
   Image,
   SafeAreaView,
   ImageBackground,
-
+ ToastAndroid
 } from "react-native";
 //import setup from "./setup";
 import Fire from 'firebase'

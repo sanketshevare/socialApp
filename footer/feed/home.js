@@ -7,7 +7,6 @@ import { Header, Container } from "native-base";
 import Ionicans from "react-native-vector-icons/Ionicons";
 
 
-LogBox.ignoreAllLogs("Setting a timer for ");
 export default function home() {
 
     const [isLoading, setLoading] = useState(false);
